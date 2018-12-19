@@ -30,6 +30,12 @@ static const unsigned char rsa4096Asn1Header[] =
     0xf7, 0x0d, 0x01, 0x01, 0x01, 0x05, 0x00, 0x03, 0x82, 0x02, 0x0f, 0x00
 };
 
+static const unsigned char rsa8192Asn1Header[] =
+{
+    0x30, 0x82, 0x02, 0x22, 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86,
+    0xf7, 0x0d, 0x01, 0x01, 0x01, 0x05, 0x00, 0x03, 0x82, 0x02, 0x0f, 0x00
+};
+
 static const unsigned char ecDsaSecp256r1Asn1Header[] =
 {
     0x30, 0x59, 0x30, 0x13, 0x06, 0x07, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x02,
@@ -54,6 +60,10 @@ static char *getAsn1HeaderBytes(NSString *publicKeyType, NSNumber *publicKeySize
     else if (([publicKeyType isEqualToString:(NSString *)kSecAttrKeyTypeRSA]) && ([publicKeySize integerValue] == 4096))
     {
         return (char *)rsa4096Asn1Header;
+    }
+    else if (([publicKeyType isEqualToString:(NSString *)kSecAttrKeyTypeRSA]) && ([publicKeySize integerValue] == 8192))
+    {
+        return (char *)rsa8192Asn1Header;
     }
     else if (([publicKeyType isEqualToString:(NSString *)kSecAttrKeyTypeECSECPrimeRandom]) && ([publicKeySize integerValue] == 256))
     {
