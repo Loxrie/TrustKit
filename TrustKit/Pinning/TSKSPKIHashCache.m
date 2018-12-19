@@ -87,6 +87,10 @@ static unsigned int getAsn1HeaderSize(NSString *publicKeyType, NSNumber *publicK
     {
         return sizeof(rsa4096Asn1Header);
     }
+    else if (([publicKeyType isEqualToString:(NSString *)kSecAttrKeyTypeRSA]) && ([publicKeySize integerValue] == 8192))
+    {
+        return sizeof(rsa8192Asn1Header);
+    }
     else if (([publicKeyType isEqualToString:(NSString *)kSecAttrKeyTypeECSECPrimeRandom]) && ([publicKeySize integerValue] == 256))
     {
         return sizeof(ecDsaSecp256r1Asn1Header);
